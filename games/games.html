@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link id="favicon" rel="icon" href="ngc.png" type="image/x-icon">
+    <title>xeno - games</title>
+    <style>
+      body {
+        background-color: rgb(10, 11, 21); 
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; 
+        overflow: hidden; 
+        position: relative;
+        font-family: 'Source Sans Pro', sans-serif;
+        color: white;
+        text-align: center;
+      }
+
+      header {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        padding: 15px; 
+        z-index: 2;
+      }
+
+      .header-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .christmas-letter {
+        font-size: 2rem;
+        font-weight: bold;
+        animation: christmasLights 1.5s infinite alternate;
+      }
+
+      .christmas-letter:nth-child(odd) {
+        color: red;
+      }
+
+      .christmas-letter:nth-child(even) {
+        color: green;
+      }
+
+      @keyframes christmasLights {
+        0% {
+          text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+        }
+        100% {
+          text-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green;
+        }
+      }
+
+      .headeroptions {
+        margin-top: 10px;
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      a {
+        color: rgba(230, 230, 230, 0.867);
+        font-size: 18px;
+        padding: 12px;
+        text-decoration: none;
+        transition: 0.3s;
+      }
+
+      a:hover {
+        color: rgb(95, 95, 95);
+        cursor: pointer;
+      }
+
+      .fade-in {
+        opacity: 0; 
+        animation: fadeIn 2s forwards;
+        z-index: 1;
+      }
+
+      @keyframes fadeIn {
+        to {
+          opacity: 1;
+        }
+      }
+
+      .snowflake {
+        position: absolute;
+        top: -10px;
+        background: white;
+        opacity: 0.8;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: fall linear infinite; 
+      }
+
+      @keyframes fall {
+        to {
+          transform: translateY(100vh);
+        }
+      }
+
+      h1 {
+        font-size: 3rem;
+        color: white;
+        margin-bottom: 20px;
+      }
+
+      .space {
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+      }
+
+      button {
+        background: none;
+        border: none;
+        font-size: 15px;
+        font-style: italic;
+        color: #999d;
+        cursor: pointer;
+        transition: 0.4s;
+      }
+
+      button:hover {
+        color: #777d;
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>
+          xeno beta
+        </h1>
+        <div>
+          <a onclick="tabcloakclever()" class="headeroptions">Clever Tab Cloak</a>
+          <a onclick="tabcloak()" class="headeroptions">Classroom Tab Cloak</a>
+          <a onclick="tabcloakixl()" class="headeroptions">IXL Tab Cloak</a>
+          <a onclick="resetcloak()" class="headeroptions">Reset Cloak</a>
+          <a href="/index.html">Back Home</a>
+        </div>
+      </div>
+    </header>
+    <div class="fade-in">
+        <a href="/cookieclicker/index.html">cookie clicker</a>
+        <a href="/2048/index.html">2048</a>
+        <a href="/retrobowl/index.html">retro bowl</a>
+        <a href="/slope/index.html">slope</a>
+        <a href="/sm64/index.html">super mario 64</a>
+        <a href="/superhot/index.html">superhot</a>
+    </div>
+
+    <script>
+      const christmasflake = () => {
+        const snowflake = document.createElement("div");
+        snowflake.className = "snowflake";
+        const size = Math.random() * 5 + 2;
+        snowflake.style.width = `${size}px`;
+        snowflake.style.height = `${size}px`;
+        snowflake.style.left = `${Math.random() * 100}vw`;
+        snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+        snowflake.style.animationDelay = `${Math.random() * 5}s`;
+        document.body.appendChild(snowflake);
+
+        setTimeout(() => {
+          snowflake.remove();
+        }, 8000);
+      };
+
+      setInterval(christmasflake, 100);
+    </script>
+  </body>
+</html>
